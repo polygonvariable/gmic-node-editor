@@ -6,7 +6,7 @@ class FArrayMirrored(GMICBaseNode):
     bl_idname = "GMIC_FArrayMirroredNode"
     bl_label = "Array Mirrored"
     bl_icon = "NODE"
-
+    
     iteration: FloatProperty(default=1.0, min=0.0, max=10.0)
     xOffset: FloatProperty(default=0.0, min=0.0, max=100.0)
     yOffset: FloatProperty(default=0.0, min=0.0, max=100.0)
@@ -23,7 +23,6 @@ class FArrayMirrored(GMICBaseNode):
         layout.prop(self, "crop", text="Crop")
 
     def execute(self):
-        temp_cmd = self.get_input_value("in")
-        return "fx_array_mirror 1,0,0,2,0,0,0"
+        return self.create_command("-fx_array_mirror 1,0,0,2,0,0,0")
     
 classes = [FArrayMirrored]

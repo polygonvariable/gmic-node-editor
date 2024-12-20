@@ -3,13 +3,16 @@ import subprocess
 import threading
 import tempfile
 import bpy
-from nodeitems_utils import NodeCategory, NodeItem, register_node_categories, unregister_node_categories
-from bpy.props import ( StringProperty,BoolProperty,IntProperty,FloatProperty,EnumProperty )
 from ..base.node import GMICBaseNode
+
+def GetGMICPath():
+    preferences = bpy.context.preferences
+    addon_prefs = preferences.addons["gmic-node-editor"].preferences
+    return addon_prefs.gmic_path
 
 class OutputNode(GMICBaseNode):
     """Output Node"""
-    bl_idname = "GMICOutputNode"
+    bl_idname = "GMIC_OutputNode"
     bl_label = "Output"
     bl_icon = "NODE"
 
@@ -49,7 +52,7 @@ class OutputNode(GMICBaseNode):
 
     def gmic_execute(self, command, input_path, output_path):
 
-        gmic_path = "D:/Installed/GMIC/gmic.exe"
+        gmic_path = GetGMICPath()
         gmic_command = f"{gmic_path} {input_path} {command} -o {output_path}"
 
         print(f"GMIC command: {gmic_command}")
@@ -78,9 +81,11 @@ class NODE_OT_ExecuteOutputNode(bpy.types.Operator):
 
     def execute(self, context):
         node = context.active_node
-        if node and node.bl_idname == 'GMICOutputNode':
+        if node and node.bl_idname == "GMIC_OutputNode":
             result = node.execute()
             self.report({'INFO'}, f"Output Node Result: {result}")
         else:
             self.report({'WARNING'}, "Active node is not an Output Node")
         return {'FINISHED'}
+
+classes = [OutputNode, NODE_OT_ExecuteOutputNode]

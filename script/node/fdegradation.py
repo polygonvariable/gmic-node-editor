@@ -17,7 +17,6 @@ class FBlur(GMICBaseNode):
         layout.prop(self, "amount", text="Amount")
 
     def execute(self):
-        temp_cmd = self.get_input_value("in")
-        return "blur 10"
+        return self.create_command("-blur 10")
     
 classes = [FBlur]

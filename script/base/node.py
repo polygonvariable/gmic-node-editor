@@ -22,3 +22,8 @@ class GMICBaseNode(bpy.types.Node):
         else:
             return self.inputs[input_name].default_value
         return ""
+    
+    def create_command(self, new_command):
+        temp_cmd = self.get_input_value("in")
+        temp_cmd += " " + new_command
+        return temp_cmd

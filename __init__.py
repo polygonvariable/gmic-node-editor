@@ -1,23 +1,19 @@
 bl_info = {
-    "name": "G'MIC Node Graph",
+    "name": "G'MIC Node Editor",
     "author": "polygonvariable",
     "version": (1, 0),
     "blender": (4, 2, 0),
-    "location": "Editor Type > G'MIC Node Graph",
+    "location": "Editor Type > G'MIC Node Editor",
     "description": "Manipulate images using G'MIC",
     "warning": "",
-    "doc_url": "",
+    "doc_url": "https://github.com/polygonvariable/gmic-node-editor",
     "category": "Utility",
 }
 
-if "bpy" in locals():
-    import importlib
-    importlib.reload(gmic_nde)
-else:
-    from .script import gmic_nde
+from .script import gmic_app
 
 def register():
-    gmic_nde.register()
+    gmic_app.register()
 
 def unregister():
-    gmic_nde.unregister()
+    gmic_app.unregister()
