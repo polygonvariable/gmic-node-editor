@@ -1,22 +1,21 @@
 from ..base.node import GMICBaseNode
+from nodeitems_utils import NodeItem
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty )
 
-class FBlur(GMICBaseNode):
+class FDegrade_Blur(GMICBaseNode):
     """Filter Blur Node"""
-    bl_idname = "GMIC_FBlurNode"
+    bl_idname = "GMIC_FDegrade_Blur"
     bl_label = "Blur"
     bl_icon = "NODE"
 
-    amount: FloatProperty(default=1.0, min=0.0, max=100.0)
+    node_props = ["amount"]
 
-    def init(self, context):
-        self.default_in()
-        self.default_out()
-
-    def draw_buttons(self, context, layout):
-        layout.prop(self, "amount", text="Amount")
+    amount: FloatProperty(name="Amount", default=1.0, min=0.0, max=100.0) # type: ignore
 
     def execute(self):
-        return self.create_command("-blur 10")
+        node_command = "-blur {0}".format(self.amount)
+        return self.create_command(node_command)
     
-classes = [FBlur]
+classes = [
+    FDegrade_Blur
+]

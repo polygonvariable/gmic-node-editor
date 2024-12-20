@@ -3,12 +3,13 @@ import bpy
 from .base import tree
 from .node import farray
 from .node import fdegradation
+from .node import fartistic
 from .node import io
 from .gmic_preference import GMICPreference
 from .gmic_category import register as register_category, unregister as unregister_category
 
 classes = []
-classes = tree.classes + io.classes + farray.classes + fdegradation.classes + [GMICPreference]
+classes = tree.classes + io.classes + farray.classes + fdegradation.classes + fartistic.classes + [GMICPreference]
 
 def register():
     for cls in classes:

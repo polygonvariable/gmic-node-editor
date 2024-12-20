@@ -1,10 +1,19 @@
 import bpy
 
+def create_enum(items = []):
+    enum_items = []
+    index = 0
+    for item in items:
+        enum_items.append((str(index), item, ""))
+        index += 1
+    return enum_items
+
 class GMICBaseNode(bpy.types.Node):
     """GMIC Base Node"""
     bl_idname = "GMICBaseNode"
     bl_label = "GMIC Base Node"
-    bl_icon = "NODE"
+    bl_width_default = 225
+    node_props = []
 
     def default_in(self):
         self.inputs.new("NodeSocketString", "in")
@@ -12,6 +21,10 @@ class GMICBaseNode(bpy.types.Node):
 
     def default_out(self):
         self.outputs.new("NodeSocketString", "out")
+
+    def init(self, context):
+        self.default_in()
+        self.default_out()
 
     def get_input_value(self, input_name):
         input_socket = self.inputs.get(input_name)
@@ -22,6 +35,10 @@ class GMICBaseNode(bpy.types.Node):
         else:
             return self.inputs[input_name].default_value
         return ""
+    
+    def draw_buttons(self, context, layout):
+        for prop in self.node_props:
+            layout.prop(self, prop)
     
     def create_command(self, new_command):
         temp_cmd = self.get_input_value("in")
