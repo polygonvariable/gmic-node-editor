@@ -12,10 +12,9 @@ class FDegrade_Blur(GMICBaseNode):
 
     amount: FloatProperty(name="Amount", default=1.0, min=0.0, max=100.0) # type: ignore
 
-    def execute(self):
-        node_command = "-blur {0}".format(self.amount)
-        return self.create_command(node_command)
-    
+    def create_command(self):
+        return "blur {0}".format(self.amount)
+
 classes = [
     FDegrade_Blur
 ]

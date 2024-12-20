@@ -23,8 +23,8 @@ class FArt_AngoisseAnguish(GMICBaseNode):
     opacity: FloatProperty(name="Opacity", default=1.0, min=0.0, max=1.0) # type: ignore
     sharp_amplitude: FloatProperty(name="Sharp Amplitude", default=250.0, min=0.0, max=500.0) # type: ignore
 
-    def execute(self):
-        node_command = "-samj_Angoisse {0},{1},{2},{3},{4},{5},{6},{7},{8}".format(
+    def create_command(self):
+        return "samj_Angoisse {0},{1},{2},{3},{4},{5},{6},{7},{8}".format(
             self.iteration,
             self.sigma1,
             self.sigma2,
@@ -35,8 +35,6 @@ class FArt_AngoisseAnguish(GMICBaseNode):
             self.opacity,
             self.sharp_amplitude
         )
-        return self.create_command(node_command)
-
 
 class FArt_Aurora(GMICBaseNode):
     """Filter Aurora Node"""
@@ -53,13 +51,12 @@ class FArt_Aurora(GMICBaseNode):
         default="0"
     ) # type: ignore
 
-    def execute(self):
-        node_command = "-gcd_aurora {0},{1},{2}".format(
+    def create_command(self):
+        return "gcd_aurora {0},{1},{2}".format(
             self.vertical,
             self.horizontal,
             int(self.blend)
         )
-        return self.create_command(node_command)
 
 classes = [
     FArt_AngoisseAnguish,

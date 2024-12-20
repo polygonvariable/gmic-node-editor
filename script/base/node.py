@@ -40,7 +40,13 @@ class GMICBaseNode(bpy.types.Node):
         for prop in self.node_props:
             layout.prop(self, prop)
     
-    def create_command(self, new_command):
+    def create_command(self):
+        return ""
+    
+    def finialize_command(self):
         temp_cmd = self.get_input_value("in")
-        temp_cmd += " " + new_command
+        temp_cmd += " -" + self.create_command()
         return temp_cmd
+    
+    def execute(self):
+        return self.finialize_command()
