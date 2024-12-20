@@ -1,9 +1,9 @@
 import bpy
 
-class GMICNode(bpy.types.Node):
-    """GMIC Node"""
-    bl_idname = "GMICNode"
-    bl_label = "GMIC Node"
+class GMICBaseNode(bpy.types.Node):
+    """GMIC Base Node"""
+    bl_idname = "GMICBaseNode"
+    bl_label = "GMIC Base Node"
     bl_icon = "NODE"
 
     def default_in(self):

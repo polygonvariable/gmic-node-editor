@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "blender-gmic-nodes"
+version = "1.0.0"
+name = "G'MIC Node Graph"
+tagline = "Manipulate images using gmic"
+maintainer = "polygonvariable <polygonvariable@gmail.com>"
+type = "add-on"
+website = "https://github.com/polygonvariable/blender-gmic-nodes"
+tags = ["Compositing", "Node"]
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+platforms = ["windows-x64"]
+
+# [permissions]
+files = "Save and load manipulated images by gmic"
