@@ -3,6 +3,7 @@ import subprocess
 import threading
 import tempfile
 import bpy
+from bpy.props import ( IntProperty, FloatProperty, EnumProperty, BoolProperty, StringProperty, PointerProperty )
 
 from ..base.library import GetPackageName
 from ..base.node import GMICBaseNode
@@ -19,20 +20,25 @@ class OutputNode(GMICBaseNode):
     bl_label = "Output"
     bl_icon = "OUTPUT"
 
+    name: StringProperty(name="Name", default="Output") # type: ignore
+    image: PointerProperty(name="Target", type=bpy.types.Image) # type: ignore
+    fast_composition: BoolProperty(name="Fast Composition", default=True) # type: ignore
+
     def init(self, context):
-        self.inputs.new("NodeSocketString", "Name")
-        self.inputs.new("NodeSocketImage", "Target")
-        self.inputs["Name"].default_value = "Output"
         self.default_in()
 
     def draw_buttons(self, context, layout):
+        layout.prop(self, "name")
+        layout.prop(self, "image")
+        layout.prop(self, "fast_composition")
         layout.operator("node.execute_output_node", text="Execute")
 
     def execute(self):
 
-        temp_name = self.inputs["Name"].default_value
+        temp_name = self.name
+        temp_image = self.image
         temp_command = self.get_input_value("in")
-        temp_image = self.inputs["Target"].default_value
+
         if isinstance(temp_image, bpy.types.Image):
             if(temp_image.is_dirty):
                 temp_image.reload()
@@ -44,7 +50,7 @@ class OutputNode(GMICBaseNode):
         print(f"Output Node: Saving image to {temp_path}")
 
         if(temp_image.name == "Render Result"):
-            temp_image.save_render(temp_path)
+            temp_image.save_render(filepath=temp_path)
         else:
             temp_image.name = temp_name
             temp_image.save(filepath=temp_path)
@@ -56,7 +62,8 @@ class OutputNode(GMICBaseNode):
     def gmic_execute(self, command, input_path, output_path):
 
         gmic_path = GetGMICPath()
-        gmic_command = f"{gmic_path} {input_path} {command} -o {output_path}"
+        gmic_optimization = self.fast_composition and "-resize 45%,45%" or ""
+        gmic_command = f"{gmic_path} {input_path} {gmic_optimization} {command} -o {output_path}"
 
         print(f"GMIC command: {gmic_command}")
 
