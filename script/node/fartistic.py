@@ -1,9 +1,11 @@
-from ..base.node import GMICBaseNode, create_enum
 from nodeitems_utils import NodeItem
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty )
 
+from ..base.node import GMICBaseNode, create_enum
+
 class FArt_AngoisseAnguish(GMICBaseNode):
-    """Filter Angoisse Anguish Node"""
+    """Angoisse Anguish by David Tschumperlé"""
+
     bl_idname = "GMIC_FArt_AngoisseAnguish"
     bl_label = "Angoisse Anguish"
 
@@ -31,13 +33,14 @@ class FArt_AngoisseAnguish(GMICBaseNode):
             self.segment_threshold,
             self.smooth_amplitude,
             self.noise_amplitude,
-            int(self.noise_type),
+            self.noise_type,
             self.opacity,
             self.sharp_amplitude
         )
 
 class FArt_Aurora(GMICBaseNode):
-    """Filter Aurora Node"""
+    """Aurora by David Tschumperlé"""
+    
     bl_idname = "GMIC_FArt_Aurora"
     bl_label = "Aurora"
 
@@ -55,7 +58,7 @@ class FArt_Aurora(GMICBaseNode):
         return "gcd_aurora {0},{1},{2}".format(
             self.vertical,
             self.horizontal,
-            int(self.blend)
+            self.blend
         )
 
 classes = [

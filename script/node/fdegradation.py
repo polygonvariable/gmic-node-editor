@@ -1,12 +1,13 @@
-from ..base.node import GMICBaseNode
 from nodeitems_utils import NodeItem
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty )
 
+from ..base.node import GMICBaseNode, create_enum
+
 class FDegrade_Blur(GMICBaseNode):
-    """Filter Blur Node"""
+    """Blur"""
+
     bl_idname = "GMIC_FDegrade_Blur"
     bl_label = "Blur"
-    bl_icon = "NODE"
 
     node_props = ["amount"]
 

@@ -1,9 +1,9 @@
 import bpy
 
 class GMICNodeTree(bpy.types.NodeTree):
-    """GMIC Node Graph"""
+    """GMIC Node Tree"""
     bl_idname = "GMIC_NodeTree"
-    bl_label = "G'MIC Node Graph"
-    bl_icon = "NODETREE"
+    bl_label = "G'MIC Node Editor"
+    bl_icon = "EXPERIMENTAL"
 
 classes = [GMICNodeTree]

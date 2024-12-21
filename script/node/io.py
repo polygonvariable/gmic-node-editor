@@ -3,18 +3,21 @@ import subprocess
 import threading
 import tempfile
 import bpy
+
+from ..base.library import GetPackageName
 from ..base.node import GMICBaseNode
 
 def GetGMICPath():
     preferences = bpy.context.preferences
-    addon_prefs = preferences.addons["gmic-node-editor"].preferences
+    addon_prefs = preferences.addons[GetPackageName()].preferences
     return addon_prefs.gmic_path
 
 class OutputNode(GMICBaseNode):
     """Output Node"""
+    
     bl_idname = "GMIC_OutputNode"
     bl_label = "Output"
-    bl_icon = "NODE"
+    bl_icon = "OUTPUT"
 
     def init(self, context):
         self.inputs.new("NodeSocketString", "Name")
@@ -59,6 +62,7 @@ class OutputNode(GMICBaseNode):
 
         try:
             subprocess.run(gmic_command, shell=True, check=True)
+
         except subprocess.CalledProcessError as e:
             print(f"GMIC command failed: {e}")
             return None

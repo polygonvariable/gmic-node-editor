@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 
-id = "blender-gmic-nodes"
+id = "gmic_node_editor"
 version = "1.0.0"
 name = "G'MIC Node Graph"
 tagline = "Manipulate images using gmic"
@@ -10,7 +10,6 @@ website = "https://github.com/polygonvariable/gmic-node-editor"
 tags = ["Compositing", "Node"]
 blender_version_min = "4.2.0"
 license = ["SPDX:GPL-3.0-or-later"]
-platforms = ["windows-x64"]
 
 # [permissions]
 files = "Save and load manipulated images by gmic"

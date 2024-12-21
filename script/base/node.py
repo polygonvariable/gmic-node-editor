@@ -12,6 +12,7 @@ class GMICBaseNode(bpy.types.Node):
     """GMIC Base Node"""
     bl_idname = "GMICBaseNode"
     bl_label = "GMIC Base Node"
+    bl_icon = "FILE_SCRIPT"
     bl_width_default = 225
     node_props = []
 
