@@ -1,4 +1,3 @@
-from nodeitems_utils import NodeItem
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty )
 
 from ..base.node import GMICBaseNode, create_enum
@@ -112,6 +111,8 @@ class FColor_Brightness(GMICBaseNode):
     bl_idname = "GMIC_FColor_Brightness"
     bl_label = "Brightness"
 
+    node_props = ["amount", "smooth"]
+
     amount: FloatProperty(name="Amount", default=50.0, min=-300.0, max=300.0) # type: ignore
     smooth: FloatProperty(name="Smooth", default=0.0, min=0.0, max=50.0) # type: ignore
     
@@ -120,7 +121,6 @@ class FColor_Brightness(GMICBaseNode):
             self.amount,
             self.smooth
         )
-
 
 
 classes = [

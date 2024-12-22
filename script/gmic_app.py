@@ -4,6 +4,7 @@ from .base import tree
 from .node import farray
 from .node import fdegradation
 from .node import fartistic
+from .node import fcontours
 from .node import fcolor
 from .node import io
 
@@ -12,6 +13,7 @@ from .gmic_category import register as register_category, unregister as unregist
 
 classes = []
 classes = tree.classes + io.classes + farray.classes + fdegradation.classes + fartistic.classes + fcolor.classes + [GMICPreference]
+classes += fcontours.classes
 
 def register():
     for cls in classes:

@@ -1,5 +1,6 @@
 from bpy.props import ( IntProperty, FloatProperty, EnumProperty, BoolProperty )
 
+from ..base.library import color_channels
 from ..base.node import GMICBaseNode, create_enum
 
 class FArt_AngoisseAnguish(GMICBaseNode):
@@ -354,6 +355,37 @@ class FArt_Cubism(GMICBaseNode):
             self.smooth
         )
 
+class FArt_Kuwahara(GMICBaseNode):
+    """Kuwahara by David Tschumperlé"""
+    # fx_kuwahara 2,3,2,0,0,50,50
+    
+    bl_idname = "GMIC_FArt_Kuwahara"
+    bl_label = "Kuwahara"
+
+    node_props = ["iteration", "radius", "channel", "action"]
+
+    iteration: IntProperty(name="Iteration", default=2, min=0, max=20) # type: ignore
+    radius: IntProperty(name="Radius", default=3, min=0, max=30) # type: ignore
+    channel: EnumProperty(
+        name="Channel",
+        items=create_enum(color_channels()),
+        default="2"
+    ) # type: ignore
+    action: EnumProperty(
+        name="Action",
+        items=create_enum(["None", "Cut", "Normalize"]),
+        default="0"
+    ) # type: ignore
+
+    def create_command(self):
+        return "fx_kuwahara {0},{1},{2},{3},0,50,50".format(
+            self.iteration,
+            self.radius,
+            self.channel,
+            self.action
+        )
+
+
 
 
 classes = [
@@ -366,5 +398,6 @@ classes = [
     FArt_Cartoon,
     FArt_ChalkItUp,
     FArt_CircleAbstraction,
-    FArt_Cubism
+    FArt_Cubism,
+    FArt_Kuwahara
 ]

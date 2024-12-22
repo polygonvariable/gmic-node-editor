@@ -1,5 +1,4 @@
-from nodeitems_utils import NodeItem
-from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, IntProperty )
+from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, IntProperty, StringProperty )
 
 from ..base.node import GMICBaseNode, create_enum
 
@@ -51,7 +50,8 @@ class FDegrade_ResizePercentage(GMICBaseNode):
             self.amount,
             self.amount
         )
-    
+
+
 classes = [
     FDegrade_Blur,
     FDegrade_Resize,

@@ -5,13 +5,8 @@ import tempfile
 import bpy
 from bpy.props import ( IntProperty, FloatProperty, EnumProperty, BoolProperty, StringProperty, PointerProperty )
 
-from ..base.library import GetPackageName
+from ..base.library import ( get_preference_path )
 from ..base.node import GMICBaseNode
-
-def GetGMICPath():
-    preferences = bpy.context.preferences
-    addon_prefs = preferences.addons[GetPackageName()].preferences
-    return addon_prefs.gmic_path
 
 class OutputNode(GMICBaseNode):
     """Output Node"""
@@ -61,7 +56,7 @@ class OutputNode(GMICBaseNode):
 
     def gmic_execute(self, command, input_path, output_path):
 
-        gmic_path = GetGMICPath()
+        gmic_path = get_preference_path()
         gmic_optimization = self.fast_composition and "-resize 45%,45%" or ""
         gmic_command = f"{gmic_path} {input_path} {gmic_optimization} {command} -o {output_path}"
 
@@ -99,4 +94,8 @@ class NODE_OT_ExecuteOutputNode(bpy.types.Operator):
             self.report({'WARNING'}, "Active node is not an Output Node")
         return {'FINISHED'}
 
-classes = [OutputNode, NODE_OT_ExecuteOutputNode]
+
+classes = [
+    OutputNode,
+    NODE_OT_ExecuteOutputNode
+]
