@@ -1,5 +1,6 @@
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty, IntProperty )
 
+from .gen import fcontours_gen
 from ..base.node import GMICBaseNode, create_enum
 
 class FContour_Curvature(GMICBaseNode):

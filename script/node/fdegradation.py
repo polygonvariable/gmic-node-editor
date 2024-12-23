@@ -1,5 +1,6 @@
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, IntProperty, StringProperty )
 
+from .gen import fdegradation_gen
 from ..base.node import GMICBaseNode, create_enum
 
 class FDegrade_Blur(GMICBaseNode):

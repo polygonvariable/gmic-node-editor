@@ -1,5 +1,6 @@
-from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty )
+from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty, PointerProperty, FloatVectorProperty )
 
+from .gen import fcolor_gen
 from ..base.node import GMICBaseNode, create_enum
     
 class FColor_ApplyExternalCLUT(GMICBaseNode):
@@ -67,8 +68,9 @@ class FColor_BoostChromaticity(GMICBaseNode):
     bl_idname = "GMIC_FColor_BoostChromaticity"
     bl_label = "Boost Chromaticity"
 
-    node_props = ["amplitude", "color"]
-
+    node_props = ["amplitude", "color", "cr", "vr"]
+    
+    # clr: FloatVectorProperty(name="clr", subtype="COLOR", default=(1.0, 1.0, 1.0), min=0.0, max=1.0)
     amplitude: FloatProperty(name="Amplitude", default=50.0, min=0.0, max=100.0) # type: ignore
     color: EnumProperty(
         name="Color Space",

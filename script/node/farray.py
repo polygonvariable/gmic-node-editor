@@ -2,6 +2,7 @@ import tempfile
 from nodeitems_utils import NodeItem
 from bpy.props import ( StringProperty, BoolProperty, FloatProperty, EnumProperty )
 
+from .gen import farray_gen
 from ..base.node import GMICBaseNode, create_enum
 
 class FAT_ArrayFaded(GMICBaseNode):

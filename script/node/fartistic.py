@@ -1,5 +1,6 @@
-from bpy.props import ( IntProperty, FloatProperty, EnumProperty, BoolProperty )
+from bpy.props import ( IntProperty, FloatProperty, EnumProperty, BoolProperty, FloatVectorProperty )
 
+from .gen import fartistic_gen
 from ..base.library import color_channels
 from ..base.node import GMICBaseNode, create_enum
 
@@ -387,7 +388,6 @@ class FArt_Kuwahara(GMICBaseNode):
 
 
 
-
 classes = [
     FArt_AngoisseAnguish,
     FArt_Aurora,
@@ -399,5 +399,5 @@ classes = [
     FArt_ChalkItUp,
     FArt_CircleAbstraction,
     FArt_Cubism,
-    FArt_Kuwahara
+    FArt_Kuwahara,
 ]
