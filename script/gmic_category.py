@@ -8,6 +8,10 @@ from .node import fcontours
 from .node import fcolor
 from .node import fdegradation
 from .node import fdeformation
+from .node import fdetail
+from .node import fframe
+from .node import flight
+from .node import fpattern
 from .node import io
 
 class GMICCategory(NodeCategory):
@@ -33,6 +37,10 @@ def register():
         GMICCategory("GMIC_NODES_CONTOURS", "Contours", items=CreateCategoryItems(fcontours.classes)),
         GMICCategory("GMIC_NODES_DEGRADE", "Degradation", items=CreateCategoryItems(fdegradation.classes)),
         GMICCategory("GMIC_NODES_DEFORM", "Deformation", items=CreateCategoryItems(fdeformation.classes)),
+        GMICCategory("GMIC_NODES_DETAIL", "Detail", items=CreateCategoryItems(fdetail.classes)),
+        GMICCategory("GMIC_NODES_FRAME", "Frame", items=CreateCategoryItems(fframe.classes)),
+        GMICCategory("GMIC_NODES_LIGHT", "Light", items=CreateCategoryItems(flight.classes)),
+        GMICCategory("GMIC_NODES_PATTERN", "Pattern", items=CreateCategoryItems(fpattern.classes)),
         GMICCategory("GMIC_NODES_IO", "IO", items=[
             NodeItem(io.OutputNode.bl_idname)
         ]),

@@ -526,23 +526,23 @@ class GMIC_FArt_graphicnovel(GMICBaseNode):
         max=1.0, 
     ) # type: ignore
     var_prop36: BoolProperty(
-        name="Add Painter's Touch",
+        name="Add Painters Touch",
         default=1,
     ) # type: ignore
     var_prop38: FloatProperty(
-        name="Painter's Touch Sharpness",
+        name="Painters Touch Sharpness",
         default=0.5,
         min=0.0, 
         max=2.0, 
     ) # type: ignore
     var_prop39: FloatProperty(
-        name="Painter's Edge Protection Flow",
+        name="Painters Edge Protection Flow",
         default=0.8,
         min=0.0, 
         max=1.0, 
     ) # type: ignore
     var_prop40: FloatProperty(
-        name="Painter's Smoothness",
+        name="Painters Smoothness",
         default=1.28,
         min=0.0, 
         max=10.0, 
@@ -643,23 +643,23 @@ class GMIC_FArt_graphicboost(GMICBaseNode):
         max=1.0, 
     ) # type: ignore
     var_prop32: BoolProperty(
-        name="Add Painter's Touch",
+        name="Add Painters Touch",
         default=1,
     ) # type: ignore
     var_prop35: FloatProperty(
-        name="Painter's Touch Sharpness",
+        name="Painters Touch Sharpness",
         default=0.5,
         min=0.0, 
         max=2.0, 
     ) # type: ignore
     var_prop36: FloatProperty(
-        name="Painter's Edge Protection Flow",
+        name="Painters Edge Protection Flow",
         default=0.45,
         min=0.0, 
         max=1.0, 
     ) # type: ignore
     var_prop37: FloatProperty(
-        name="Painter's Smoothness",
+        name="Painters Smoothness",
         default=1.0,
         min=0.0, 
         max=10.0, 
@@ -1041,7 +1041,7 @@ class GMIC_FArt_lylejkspainting(GMICBaseNode):
     # fx_lylejk_painting
 
     bl_idname = "FArt_lylejkspainting"
-    bl_label = "Lylejk's Painting"
+    bl_label = "Lylejks Painting"
 
     node_props = ["var_prop0", "var_prop1", "var_prop2", "var_prop3", "var_prop5"]
 
@@ -1368,6 +1368,7 @@ class GMIC_FArt_hopeposter(GMICBaseNode):
         return f"fx_poster_hope {self.var_prop0},{self.var_prop1},{self.var_prop3},50,50"
 
 ################################################################################
+################################################################################
 
 class GMIC_FArt_paintwithbrush(GMICBaseNode):
     """Paint With Brush by Author: David Tschumperlé. Latest Update: 2021/08/30."""
@@ -1584,7 +1585,7 @@ class GMIC_FArt_paintwithbrush(GMICBaseNode):
     ) # type: ignore
 
     def create_command(self):
-        return f"fx_paint_with_brush {self.var_prop0},1,{self.var_prop4},{self.var_prop5},{self.var_prop6},{self.var_prop7},{self.var_prop8},{self.var_prop9},{self.var_prop10},{self.var_prop11},{self.var_prop12},{self.var_prop13},{self.var_prop15},{self.var_prop17},{self.var_prop20},{self.var_prop21},{self.var_prop22},{self.var_prop23},{self.var_prop24},{self.var_prop25},{self.var_prop28},{self.var_prop29},{self.var_prop30},{self.var_prop31},{self.var_prop32},{self.var_prop33},{self.var_prop36},{self.var_prop37},{self.var_prop38},{self.var_prop39},{self.var_prop40},{self.var_prop41},{self.var_prop42},{self.var_prop43},{int(self.var_prop45)},{self.var_prop46},50,50"
+        return f"fx_paint_with_brush {self.var_prop0},-1,{self.var_prop4},{self.var_prop5},{self.var_prop6},{self.var_prop7},{self.var_prop8},{self.var_prop9},{self.var_prop10},{self.var_prop11},{self.var_prop12},{self.var_prop13},{self.var_prop15},{self.var_prop17},{self.var_prop20},{self.var_prop21},{self.var_prop22},{self.var_prop23},{self.var_prop24},{self.var_prop25},{self.var_prop28},{self.var_prop29},{self.var_prop30},{self.var_prop31},{self.var_prop32},{self.var_prop33},{self.var_prop36},{self.var_prop37},{self.var_prop38},{self.var_prop39},{self.var_prop40},{self.var_prop41},{self.var_prop42},{self.var_prop43},{int(self.var_prop45)},{self.var_prop46},50,50"
 
 ################################################################################
 ################################################################################
@@ -2204,7 +2205,6 @@ class GMIC_FArt_posterize(GMICBaseNode):
         return f"fx_posterize {self.var_prop0},{self.var_prop1},{self.var_prop2},{self.var_prop3},{self.var_prop4},{self.var_prop5},{int(self.var_prop6)},{self.var_prop8},50,50"
 
 ################################################################################
-
 ################################################################################
 
 class GMIC_FArt_posterizeddithering(GMICBaseNode):
@@ -2879,11 +2879,7 @@ class GMIC_FArt_whirldrawing(GMICBaseNode):
 ################################################################################
 
 node_classes = [
-    GMIC_FArt_cutout, GMIC_FArt_diffusiontensors, GMIC_FArt_dreamsmoothing, GMIC_FArt_ellipsionism, GMIC_FArt_feltpen,
-    GMIC_FArt_fingerpaint, GMIC_FArt_hardsketch, GMIC_FArt_graphicnovel, GMIC_FArt_graphicboost, GMIC_FArt_ghost, GMIC_FArt_fractalize,
-    GMIC_FArt_highlightbloom, GMIC_FArt_morphologypainting, GMIC_FArt_makesquiggly, GMIC_FArt_lylejkspainting, GMIC_FArt_linify, GMIC_FArt_lineart, GMIC_FArt_illustrationlook, GMIC_FArt_houghsketch, GMIC_FArt_hopeposter,
-    GMIC_FArt_paintwithbrush, GMIC_FArt_painting, GMIC_FArt_pastellart, GMIC_FArt_pendrawing, GMIC_FArt_photoillustration, GMIC_FArt_polygonizedelaunay, GMIC_FArt_polygonizeenergy, GMIC_FArt_posteredges, GMIC_FArt_posterize,
-    GMIC_FArt_posterizeddithering, GMIC_FArt_quadtreevariations, GMIC_FArt_rodilius, GMIC_FArt_sharpabstract, GMIC_FArt_simplenoisecanvas, GMIC_FArt_skeletik, GMIC_FArt_sketch, GMIC_FArt_smoothabstract, GMIC_FArt_vectorpainting, GMIC_FArt_warhol, GMIC_FArt_whirldrawing
+    GMIC_FArt_cutout, GMIC_FArt_diffusiontensors, GMIC_FArt_dreamsmoothing, GMIC_FArt_ellipsionism, GMIC_FArt_feltpen, GMIC_FArt_fingerpaint, GMIC_FArt_hardsketch, GMIC_FArt_graphicnovel, GMIC_FArt_graphicboost, GMIC_FArt_ghost, GMIC_FArt_fractalize, GMIC_FArt_highlightbloom, GMIC_FArt_morphologypainting, GMIC_FArt_makesquiggly, GMIC_FArt_lylejkspainting, GMIC_FArt_linify, GMIC_FArt_lineart, GMIC_FArt_illustrationlook, GMIC_FArt_houghsketch, GMIC_FArt_hopeposter, GMIC_FArt_paintwithbrush, GMIC_FArt_painting, GMIC_FArt_pastellart, GMIC_FArt_pendrawing, GMIC_FArt_photoillustration, GMIC_FArt_polygonizedelaunay, GMIC_FArt_polygonizeenergy, GMIC_FArt_posteredges, GMIC_FArt_posterize, GMIC_FArt_posterizeddithering, GMIC_FArt_quadtreevariations, GMIC_FArt_rodilius, GMIC_FArt_sharpabstract, GMIC_FArt_simplenoisecanvas, GMIC_FArt_skeletik, GMIC_FArt_sketch, GMIC_FArt_smoothabstract, GMIC_FArt_vectorpainting, GMIC_FArt_warhol, GMIC_FArt_whirldrawing
 ]
 
 ################################################################################

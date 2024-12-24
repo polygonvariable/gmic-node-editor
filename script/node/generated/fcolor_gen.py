@@ -777,7 +777,7 @@ class GMIC_FColor_colorpresets(GMICBaseNode):
     var_prop18: EnumProperty(
         name="Olivio Sarikas",
         default="1",
-        items=create_enum(["All [Collage]", "None", "Analog Film 1", "Atomic Pink", "Beach Aqua Orange", "Beach Faded Analog", "BW but Yellow", "City Dust", "Dark Orange Teal", "Day to Night King&#x27;s Blue", "DuoTone Blue Red", "Faded Pink-ish", "Flat Blue Moon", "Honey Light", "Infrared - Dust Pink", "Neutral Pump", "Shade King&#x27;s Ink", "Sunset Aqua Orange", "Sunset Intense Violet Blue", "Sunset Violet Mood", "Violet Taste"]),
+        items=create_enum(["All [Collage]", "None", "Analog Film 1", "Atomic Pink", "Beach Aqua Orange", "Beach Faded Analog", "BW but Yellow", "City Dust", "Dark Orange Teal", "Day to Night Kings Blue", "DuoTone Blue Red", "Faded Pink-ish", "Flat Blue Moon", "Honey Light", "Infrared - Dust Pink", "Neutral Pump", "Shade Kings Ink", "Sunset Aqua Orange", "Sunset Intense Violet Blue", "Sunset Violet Mood", "Violet Taste"]),
     ) # type: ignore
     var_prop19: EnumProperty(
         name="ON1 Photography",
@@ -802,7 +802,7 @@ class GMIC_FColor_colorpresets(GMICBaseNode):
     var_prop23: EnumProperty(
         name="Purple11",
         default="1",
-        items=create_enum(["All [Collage]", "None", "Going for a Walk", "Good Morning", "Nah", "Once Upon a Time", "Passing By", "Serenity", "Smooth Sailing", "Undeniable", "Undeniable 2", "Urban Cowboy", "We&#x27;ll See", "You Can Do It"]),
+        items=create_enum(["All [Collage]", "None", "Going for a Walk", "Good Morning", "Nah", "Once Upon a Time", "Passing By", "Serenity", "Smooth Sailing", "Undeniable", "Undeniable 2", "Urban Cowboy", "Well See", "You Can Do It"]),
     ) # type: ignore
     var_prop24: EnumProperty(
         name="RocketStock",
@@ -832,7 +832,7 @@ class GMIC_FColor_colorpresets(GMICBaseNode):
     var_prop29: EnumProperty(
         name="Others",
         default="1",
-        items=create_enum(["All [Collage]", "None", "60&#x27;s", "60&#x27;s (faded)", "60&#x27;s (faded alt)", "Alien green", "Black & White", "Bleach bypass", "Blue mono", "Cinematic-01", "Cinematic-02", "Cinematic-03", "Color (rich)", "Faded", "Faded (alt)", "Faded (analog)", "Faded (extreme)", "Faded (vivid)", "Expired (fade)", "Expired (polaroid)", "Extreme", "Fade", "Faux infrared", "Golden", "Golden (bright)", "Golden (fade)", "Golden (mono)", "Golden (vibrant)", "Green mono", "Hong Kong", "Instant-C", "K-Tone Vintage Kodachrome", "Light (blown)", "Lomo", "Mono tinted", "Muted fade", "Mute shift", "Natural (vivid)", "Nostalgic", "Orange tone", "Pink fade", "Purple", "Retro", "Rotate (muted)", "Rotate (vibrant)", "Rotated", "Rotated (crush)", "Smooth crome-ish", "Smooth fade", "Soft fade", "Solarize color", "Solarized color2", "Summer", "Summer (alt)", "Sunny", "Sunny (alt)", "Sunny (warm)", "Sunny (rich)", "Super warm", "Super warm (rich)", "Sutro FX", "Vibrant", "Vibrant (alien)", "Vibrant (contrast)", "Vibrant (crome-ish)", "Vintage", "Vintage (alt)", "Vintage (brighter)", "Warm", "Warm (highlight)", "Warm (yellow)"]),
+        items=create_enum(["All [Collage]", "None", "60s", "60s (faded)", "60s (faded alt)", "Alien green", "Black & White", "Bleach bypass", "Blue mono", "Cinematic-01", "Cinematic-02", "Cinematic-03", "Color (rich)", "Faded", "Faded (alt)", "Faded (analog)", "Faded (extreme)", "Faded (vivid)", "Expired (fade)", "Expired (polaroid)", "Extreme", "Fade", "Faux infrared", "Golden", "Golden (bright)", "Golden (fade)", "Golden (mono)", "Golden (vibrant)", "Green mono", "Hong Kong", "Instant-C", "K-Tone Vintage Kodachrome", "Light (blown)", "Lomo", "Mono tinted", "Muted fade", "Mute shift", "Natural (vivid)", "Nostalgic", "Orange tone", "Pink fade", "Purple", "Retro", "Rotate (muted)", "Rotate (vibrant)", "Rotated", "Rotated (crush)", "Smooth crome-ish", "Smooth fade", "Soft fade", "Solarize color", "Solarized color2", "Summer", "Summer (alt)", "Sunny", "Sunny (alt)", "Sunny (warm)", "Sunny (rich)", "Super warm", "Super warm (rich)", "Sutro FX", "Vibrant", "Vibrant (alien)", "Vibrant (contrast)", "Vibrant (crome-ish)", "Vintage", "Vintage (alt)", "Vintage (brighter)", "Warm", "Warm (highlight)", "Warm (yellow)"]),
     ) # type: ignore
     var_prop30: IntProperty(
         name="Thumbnail Size",
@@ -1025,7 +1025,7 @@ class GMIC_FColor_colormap(GMICBaseNode):
 ################################################################################
 
 class GMIC_FColor_contrast(GMICBaseNode):
-    """Contrast by &lt;strong&gt;Enhance luminance contrast. Filter by &lt;a href&#x3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2020 Jan9.&lt;/strong&gt; """
+    """Contrast by &lt;strong&gt;Enhance luminance contrast. Filter by &lt;a hrefx3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2020 Jan9.&lt;/strong&gt; """
     # afre_contrast
 
     bl_idname = "FColor_contrast"
@@ -1586,7 +1586,7 @@ class GMIC_FColor_customizeclut(GMICBaseNode):
 ################################################################################
 
 class GMIC_FColor_darksky(GMICBaseNode):
-    """Dark Sky by &lt;strong&gt;Enhance landscape by darkening the sky. Filter by &lt;a href&#x3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2017-2020 Sep9.&lt;/strong&gt; """
+    """Dark Sky by &lt;strong&gt;Enhance landscape by darkening the sky. Filter by &lt;a hrefx3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2017-2020 Sep9.&lt;/strong&gt; """
     # afre_darksky
 
     bl_idname = "FColor_darksky"
@@ -2294,7 +2294,7 @@ class GMIC_FColor_lmsadjustment(GMICBaseNode):
 ################################################################################
 
 class GMIC_FColor_localcontrast(GMICBaseNode):
-    """Local Contrast by &lt;strong&gt;Enhance local contrast. Filter by &lt;a href&#x3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2020 Jul28-Sep5.&lt;/strong&gt; """
+    """Local Contrast by &lt;strong&gt;Enhance local contrast. Filter by &lt;a hrefx3D;&quot;https://discuss.pixls.us/u/afre&quot;&gt;afre&lt;/a&gt; 2020 Jul28-Sep5.&lt;/strong&gt; """
     # afre_localcontrast
 
     bl_idname = "FColor_localcontrast"
@@ -2727,7 +2727,7 @@ class GMIC_FColor_mixerpca(GMICBaseNode):
     ) # type: ignore
 
     def create_command(self):
-        return f"fx_mix_pca {self.var_prop0},{self.var_prop1},{self.var_prop2},{self.var_prop3},{self.var_prop5},{self.var_prop6},{self.var_prop7},{self.var_prop8},{self.var_prop10},{self.var_prop11},{self.var_prop12},{self.var_prop13},{int(self.var_prop15)},NaN,NaN,{self.var_prop19},50,50"
+        return f"fx_mix_pca {self.var_prop0},{self.var_prop1},{self.var_prop2},{self.var_prop3},{self.var_prop5},{self.var_prop6},{self.var_prop7},{self.var_prop8},{self.var_prop10},{self.var_prop11},{self.var_prop12},{self.var_prop13},{int(self.var_prop15)},\\\"-1,-1,-1,-1\\\",\\\"0,0,0,0,0,0,0,0,0,0,0,0\\\",{self.var_prop19},50,50"
 
 ################################################################################
 ################################################################################
@@ -4014,11 +4014,7 @@ class GMIC_FColor_zonesystem(GMICBaseNode):
 ################################################################################
 
 node_classes = [
-    GMIC_FColor_channelprocessing, GMIC_FColor_cmyktone, GMIC_FColor_colorbalance, GMIC_FColor_colorblindness, GMIC_FColor_colorgrading, GMIC_FColor_colorpresets,
-    GMIC_FColor_colortemperature, GMIC_FColor_colormap, GMIC_FColor_contrast, GMIC_FColor_customizeclut, GMIC_FColor_darksky, GMIC_FColor_detectskin, GMIC_FColor_equalizehsihslhsv, GMIC_FColor_equalizehsv, GMIC_FColor_hsladjustment,
-    GMIC_FColor_huelightendarken, GMIC_FColor_lmsadjustment, GMIC_FColor_localcontrast, GMIC_FColor_metalliclook, GMIC_FColor_mixercmyk, GMIC_FColor_mixerhsv, GMIC_FColor_mixerlab, GMIC_FColor_mixerpca, GMIC_FColor_mixerrgb, GMIC_FColor_mixerycbcr,
-    GMIC_FColor_normalizebrightness, GMIC_FColor_retinex, GMIC_FColor_retrofade, GMIC_FColor_rgbtone, GMIC_FColor_saturationeq, GMIC_FColor_selectreplacecolor, GMIC_FColor_selectivedesaturation, GMIC_FColor_sepia, GMIC_FColor_simulatefilm,
-    GMIC_FColor_temperaturebalance, GMIC_FColor_tonepresets, GMIC_FColor_userdefined, GMIC_FColor_vibrance, GMIC_FColor_vintagestyle, GMIC_FColor_zonesystem
+    GMIC_FColor_channelprocessing, GMIC_FColor_cmyktone, GMIC_FColor_colorbalance, GMIC_FColor_colorblindness, GMIC_FColor_colorgrading, GMIC_FColor_colorpresets, GMIC_FColor_colortemperature, GMIC_FColor_colormap, GMIC_FColor_contrast, GMIC_FColor_customizeclut, GMIC_FColor_darksky, GMIC_FColor_detectskin, GMIC_FColor_equalizehsihslhsv, GMIC_FColor_equalizehsv, GMIC_FColor_hsladjustment, GMIC_FColor_huelightendarken, GMIC_FColor_lmsadjustment, GMIC_FColor_localcontrast, GMIC_FColor_metalliclook, GMIC_FColor_mixercmyk, GMIC_FColor_mixerhsv, GMIC_FColor_mixerlab, GMIC_FColor_mixerpca, GMIC_FColor_mixerrgb, GMIC_FColor_mixerycbcr, GMIC_FColor_normalizebrightness, GMIC_FColor_retinex, GMIC_FColor_retrofade, GMIC_FColor_rgbtone, GMIC_FColor_saturationeq, GMIC_FColor_selectreplacecolor, GMIC_FColor_selectivedesaturation, GMIC_FColor_sepia, GMIC_FColor_simulatefilm, GMIC_FColor_temperaturebalance, GMIC_FColor_tonepresets, GMIC_FColor_userdefined, GMIC_FColor_vibrance, GMIC_FColor_vintagestyle, GMIC_FColor_zonesystem
 ]
 
 ################################################################################
