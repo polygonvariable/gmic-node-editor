@@ -2,10 +2,11 @@
 A node editor graph for image manipulation using G'MIC directly inside Blender, featuring 100+ of filters.
 
 # Index
-- [How to Use ?](#how-to-use)
+- How to Use ?
     - [G'MIC Installation](#gmic-installation)
     - [Addon Installation](#addon-installation)
     - [G'MIC Node Editor](#gmic-node-editor)
+- [Development](#development)
 
 # G'MIC Installation
 1. Download the G'MIC binary file from the [G'MIC Website](https://gmic.eu/download.html):
@@ -31,3 +32,7 @@ A node editor graph for image manipulation using G'MIC directly inside Blender, 
 
 2. Add G'MIC nodes to your graph and begin post-processing images.
 ![](images/addon5.jpg)
+
+# Development
+- TODO
+- [gmic-node-editor-generator](https://github.com/polygonvariable/gmic-node-editor-generator)
