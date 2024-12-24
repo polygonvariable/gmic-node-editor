@@ -1,4 +1,4 @@
-from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty, PointerProperty, FloatVectorProperty )
+from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty, PointerProperty, FloatVectorProperty, IntProperty )
 
 from ...base.node import GMICBaseNode
 from ...base.library import create_enum
@@ -124,11 +124,40 @@ class FColor_Brightness(GMICBaseNode):
             self.smooth
         )
 
+class FColor_RandomColorTransformation(GMICBaseNode):
+    """RandomColorTransformation by David Tschumperlé"""
+    # fx_random_color_transformation 95828,0,"0",100,0,0,0,0,0,0,50,50
+
+    bl_idname = "GMIC_FColor_RandomColorTransformation"
+    bl_label = "Random Color Transformation"
+
+    node_props = ["seed", "amplitude", "brightness", "contrast", "gamma", "hue", "saturation"]
+
+    seed: IntProperty(name="Seed", default=50, min=0, max=100000) # type: ignore
+    amplitude: FloatProperty(name="Amplitude", default=100.0, min=0.0, max=100.0) # type: ignore
+    brightness: FloatProperty(name="Brightness", default=0.0, min=-100.0, max=100.0) # type: ignore
+    contrast: FloatProperty(name="Contrast", default=0.0, min=-100.0, max=100.0) # type: ignore
+    gamma: FloatProperty(name="Gamma", default=0.0, min=-100.0, max=100.0) # type: ignore
+    hue: FloatProperty(name="Hue", default=0.0, min=-100.0, max=100.0) # type: ignore
+    saturation: FloatProperty(name="Saturation", default=0.0, min=-100.0, max=100.0) # type: ignore
+
+    def create_command(self):
+        return "fx_random_color_transformation {0},0,0,{1},{2},{3},{4},{5},{6},0,50,50".format(
+            self.seed,
+            self.amplitude,
+            self.brightness,
+            self.contrast,
+            self.gamma,
+            self.hue,
+            self.saturation
+        )
+
 
 node_classes = [
     FColor_ApplyExternalCLUT,
     FColor_BasicAdjustments,
     FColor_BoostChromaticity,
     FColor_BoostFade,
-    FColor_Brightness
+    FColor_Brightness,
+    FColor_RandomColorTransformation
 ]

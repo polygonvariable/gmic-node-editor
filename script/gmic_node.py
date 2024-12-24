@@ -1,14 +1,17 @@
 import bpy
 
 from .node import farray
-from .node import fdegradation
 from .node import fartistic
+from .node import fbnw
 from .node import fcontours
 from .node import fcolor
+from .node import fdegradation
+from .node import fdeformation
 from .node import io
 
 classes = []
 classes += farray.classes + fdegradation.classes + fartistic.classes + fcontours.classes + fcolor.classes + io.classes
+classes += fbnw.classes + fdeformation.classes
 
 def register():
     for cls in classes:

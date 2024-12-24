@@ -479,7 +479,7 @@ class GMIC_FArt_graphicnovel(GMICBaseNode):
         default=0,
     ) # type: ignore
     var_prop20: BoolProperty(
-        name="Activate &#x27;Pencil Smoother&#x27;",
+        name="Activate Pencil Smoother",
         default=1,
     ) # type: ignore
     var_prop23: FloatProperty(
@@ -526,23 +526,23 @@ class GMIC_FArt_graphicnovel(GMICBaseNode):
         max=1.0, 
     ) # type: ignore
     var_prop36: BoolProperty(
-        name="Add Painter&#x27;s Touch",
+        name="Add Painter's Touch",
         default=1,
     ) # type: ignore
     var_prop38: FloatProperty(
-        name="Painter&#x27;s Touch Sharpness",
+        name="Painter's Touch Sharpness",
         default=0.5,
         min=0.0, 
         max=2.0, 
     ) # type: ignore
     var_prop39: FloatProperty(
-        name="Painter&#x27;s Edge Protection Flow",
+        name="Painter's Edge Protection Flow",
         default=0.8,
         min=0.0, 
         max=1.0, 
     ) # type: ignore
     var_prop40: FloatProperty(
-        name="Painter&#x27;s Smoothness",
+        name="Painter's Smoothness",
         default=1.28,
         min=0.0, 
         max=10.0, 
@@ -596,7 +596,7 @@ class GMIC_FArt_graphicboost(GMICBaseNode):
         default=0,
     ) # type: ignore
     var_prop16: BoolProperty(
-        name="Activate &#x27;Pencil Smoother&#x27;",
+        name="Activate Pencil Smoother",
         default=1,
     ) # type: ignore
     var_prop18: FloatProperty(
@@ -643,23 +643,23 @@ class GMIC_FArt_graphicboost(GMICBaseNode):
         max=1.0, 
     ) # type: ignore
     var_prop32: BoolProperty(
-        name="Add Painter&#x27;s Touch",
+        name="Add Painter's Touch",
         default=1,
     ) # type: ignore
     var_prop35: FloatProperty(
-        name="Painter&#x27;s Touch Sharpness",
+        name="Painter's Touch Sharpness",
         default=0.5,
         min=0.0, 
         max=2.0, 
     ) # type: ignore
     var_prop36: FloatProperty(
-        name="Painter&#x27;s Edge Protection Flow",
+        name="Painter's Edge Protection Flow",
         default=0.45,
         min=0.0, 
         max=1.0, 
     ) # type: ignore
     var_prop37: FloatProperty(
-        name="Painter&#x27;s Smoothness",
+        name="Painter's Smoothness",
         default=1.0,
         min=0.0, 
         max=10.0, 
@@ -2541,7 +2541,7 @@ class GMIC_FArt_simplenoisecanvas(GMICBaseNode):
     ) # type: ignore
     var_prop23: FloatVectorProperty(
         name="Canvas Color",
-        default=(255.0,255.0,255.0),
+        default=(1.0,1.0,1.0),
         min=0.0, 
         max=1.0, 
         subtype="COLOR",
