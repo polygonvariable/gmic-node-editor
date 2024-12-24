@@ -3,19 +3,20 @@ A node editor graph for image manipulation using G'MIC directly inside Blender, 
 
 # Index
 - [How to Use ?](#how-to-use)
-  - [G'MIC Installation](#gmic-installation)
-  - [Addon Installation](#addon-installation)
-  - [G'MIC Node Editor](#gmic-node-editor)
+    - [G'MIC Installation](#gmic-installation)
+    - [Addon Installation](#addon-installation)
+    - [G'MIC Node Editor](#gmic-node-editor)
 
 # G'MIC Installation
 1. Download the G'MIC binary file from the [G'MIC Website](https://gmic.eu/download.html):
-  - For Windows, look under **G'MIC for Windows - Other interfaces**, and select **Command-line interface (CLI)**.
+    - For Windows, look under **G'MIC for Windows - Other interfaces**, and select **Command-line interface (CLI)**.
+![](images/gmic1.jpg)
 2. Extract the downloaded files.
 3. Copy the full path to the `gmic.exe` file.
 
 # Addon Installation
 1. Download the addon zip file:
-  - Use **Code > Download ZIP** or check **Releases** on the repository page.
+    - Use **Code > Download ZIP** or check **Releases** on the repository page.
 2. Open Blender and go to **Edit > Preferences > Add-ons**.
 3. Click **Install From Disk**, and select the downloaded addon zip file.
 ![](images/addon1.jpg)
