@@ -15,8 +15,11 @@ class GMICCategory(NodeCategory):
 
 def CreateCategoryItems(classes):
     categories = []
-    for cls in classes:
+    categories_sorted = sorted(classes, key=lambda cls: cls.bl_label)
+
+    for cls in categories_sorted:
         categories.append(NodeItem(cls.bl_idname))
+
     return categories
 
 def register():
