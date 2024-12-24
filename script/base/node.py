@@ -1,13 +1,5 @@
 import bpy
 
-def create_enum(items = []):
-    enum_items = []
-    index = 0
-    for item in items:
-        enum_items.append((str(index), item, ""))
-        index += 1
-    return enum_items
-
 class GMICBaseNode(bpy.types.Node):
     """GMIC Base Node"""
     bl_idname = "GMICBaseNode"

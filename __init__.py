@@ -19,4 +19,4 @@ def unregister():
     gmic_app.unregister()
 
 if __name__ == "__main__":
-    register()
+    gmic_app.register()

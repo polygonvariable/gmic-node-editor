@@ -1,26 +1,16 @@
-import bpy
-
-from .base import tree
-from .node import farray
-from .node import fdegradation
-from .node import fartistic
-from .node import fcontours
-from .node import fcolor
-from .node import io
-
-from .gmic_preference import GMICPreference
+from .gmic_tree import register as register_tree, unregister as unregister_tree
+from .gmic_node import register as register_node, unregister as unregister_node
+from .gmic_preference import register as register_preference, unregister as unregister_preference
 from .gmic_category import register as register_category, unregister as unregister_category
 
-classes = []
-classes = tree.classes + io.classes + farray.classes + fdegradation.classes + fartistic.classes + fcolor.classes + [GMICPreference]
-classes += fcontours.classes
-
 def register():
-    for cls in classes:
-        bpy.utils.register_class(cls)
+    register_tree()
+    register_node()
+    register_preference()
     register_category()
 
 def unregister():
-    for cls in reversed(classes):
-        bpy.utils.unregister_class(cls)
+    unregister_tree()
+    unregister_node()
+    unregister_preference()
     unregister_category()

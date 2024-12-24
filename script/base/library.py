@@ -13,6 +13,14 @@ def get_preference_path():
 def get_preference_isRTL():
     return get_preference().graph_layout
 
+def create_enum(items = []):
+    enum_items = []
+    index = 0
+    for item in items:
+        enum_items.append((str(index), item, ""))
+        index += 1
+    return enum_items
+
 def color_channels():
     return ["All",
         "RGBA [All]",
