@@ -1,4 +1,4 @@
-# G'MIC Node Editor for Blender 🌅
+# G'MIC Node Editor for Blender 🔆
 A node editor graph for image manipulation using G'MIC directly inside Blender, featuring 100+ of filters.
 
 # Index
@@ -66,3 +66,7 @@ This chaining of commands ensures that each node contributes its functionality (
 Once all nodes are processed, the final G'MIC command string is generated and executed. And the image is reloaded.
 
 You can open the console window to see the final command.
+
+---
+
+## ☄️

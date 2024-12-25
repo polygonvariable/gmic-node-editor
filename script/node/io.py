@@ -41,13 +41,15 @@ class OutputNode(GMICBaseNode):
             print("Output Node: Invalid input image.")
             return None
 
+        temp_image.file_format = "PNG"
+        
         temp_path = os.path.join(tempfile.gettempdir(), temp_name + ".png")
         print(f"Output Node: Saving image to {temp_path}")
 
         if(temp_image.name == "Render Result"):
             temp_image.save_render(filepath=temp_path)
         else:
-            temp_image.name = temp_name
+            #temp_image.name = temp_name
             temp_image.save(filepath=temp_path)
 
         threading.Thread(target=self.gmic_execute, args=(temp_command, temp_path, temp_path)).start()
