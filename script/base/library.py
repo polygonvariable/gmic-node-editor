@@ -1,3 +1,7 @@
+import os
+import tempfile
+import subprocess
+
 import bpy
 
 def get_package_name():
@@ -20,6 +24,68 @@ def create_enum(items = []):
         enum_items.append((str(index), item, ""))
         index += 1
     return enum_items
+
+
+def save_image(image, name):
+    try:
+
+        path = os.path.join(tempfile.gettempdir(), name + ".png")
+
+        if isinstance(image, bpy.types.Image):
+            if(image.is_dirty):
+                image.reload()
+                image.file_format = "PNG"
+        else:
+            print("Output Node: Invalid input image.")
+            raise Exception("Invalid input image")
+        
+        print(f"Output Node: Saving image to {path}")
+
+        if(image.name == "Render Result" or image.name == "Viewer Node"):
+            image.save_render(filepath=path)
+        else:
+            image.save(filepath=path)
+
+        return True
+    
+    except:
+        print("Failed to save image")
+        return False
+
+
+def run_gmic(command, name, downscale):
+    try:
+
+        image_path = os.path.join(tempfile.gettempdir(), name + ".png")
+
+        gmic_path = get_preference_path()
+        gmic_downscale = downscale and "-resize 45%,45%" or ""
+        gmic_command = f"{gmic_path} {image_path} {gmic_downscale} {command} -o {image_path}"
+
+        print(f"GMIC command: {gmic_command}")
+
+        subprocess.run(gmic_command, shell=True, check=True)
+
+        if os.path.exists(image_path):
+                
+            image = bpy.data.images.get(name)
+            if image:
+                image.reload()
+            else:
+                image = bpy.data.images.load(image_path, check_existing=True)
+                image.name = name
+
+            print(f"Output image loaded: {image.name}")
+        else:
+            raise Exception("Failed to load output image")
+
+        return True
+
+    except:
+        print("Failed to execute GMIC command")
+        return False
+
+
 
 def color_channels():
     return ["All",

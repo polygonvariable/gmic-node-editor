@@ -41,9 +41,7 @@ def register():
         GMICCategory("GMIC_NODES_FRAME", "Frame", items=CreateCategoryItems(fframe.classes)),
         GMICCategory("GMIC_NODES_LIGHT", "Light", items=CreateCategoryItems(flight.classes)),
         GMICCategory("GMIC_NODES_PATTERN", "Pattern", items=CreateCategoryItems(fpattern.classes)),
-        GMICCategory("GMIC_NODES_IO", "IO", items=[
-            NodeItem(io.OutputNode.bl_idname)
-        ]),
+        GMICCategory("GMIC_NODES_IO", "IO", items=CreateCategoryItems(io.classes)),
     ]
     register_node_categories("GMIC_NODES", node_categories)
 
