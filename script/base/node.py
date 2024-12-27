@@ -25,8 +25,6 @@ class GMICBaseNode(bpy.types.Node):
             from_node = input_socket.links[0].from_node
             if hasattr(from_node, "execute"):
                 return from_node.execute()
-        else:
-            return self.inputs[input_name].default_value
         return ""
     
     def draw_buttons(self, context, layout):
@@ -36,10 +34,10 @@ class GMICBaseNode(bpy.types.Node):
     def create_command(self):
         return ""
     
-    def finialize_command(self):
+    def finalize_command(self):
         temp_cmd = self.get_input_value("in")
         temp_cmd += " -" + self.create_command()
         return temp_cmd
     
     def execute(self):
-        return self.finialize_command()
+        return self.finalize_command()

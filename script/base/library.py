@@ -46,33 +46,33 @@ def save_image(image, name):
         else:
             image.save(filepath=path)
 
-        return True
+        return path
     
     except:
         print("Failed to save image")
-        return False
+        return None
 
 
-def run_gmic(command, name, downscale):
+def run_gmic(command, name):
     try:
 
-        image_path = os.path.join(tempfile.gettempdir(), name + ".png")
+        output_path = os.path.join(tempfile.gettempdir(), name + ".png")
 
         gmic_path = get_preference_path()
-        gmic_downscale = downscale and "-resize 45%,45%" or ""
-        gmic_command = f"{gmic_path} {image_path} {gmic_downscale} {command} -o {image_path}"
+
+        gmic_command = f"{gmic_path} {command} -o {output_path}"
 
         print(f"GMIC command: {gmic_command}")
 
         subprocess.run(gmic_command, shell=True, check=True)
 
-        if os.path.exists(image_path):
+        if os.path.exists(output_path):
                 
             image = bpy.data.images.get(name)
             if image:
                 image.reload()
             else:
-                image = bpy.data.images.load(image_path, check_existing=True)
+                image = bpy.data.images.load(output_path, check_existing=True)
                 image.name = name
 
             print(f"Output image loaded: {image.name}")
