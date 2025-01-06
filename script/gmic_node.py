@@ -12,12 +12,12 @@ from .node import fframe
 from .node import flight
 from .node import fpattern
 from .node import io
-
-from .operator import exec_rungmic
+from .node import script
 
 classes = []
 classes += farray.classes + fdegradation.classes + fartistic.classes + fcontours.classes + fcolor.classes + io.classes
 classes += fbnw.classes + fdeformation.classes + fdetail.classes + fframe.classes + flight.classes + fpattern.classes
+classes += script.classes
 
 def register():
     for cls in classes:

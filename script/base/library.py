@@ -29,7 +29,7 @@ def create_enum(items = []):
 def save_image(image, name):
     try:
 
-        path = os.path.join(tempfile.gettempdir(), name + ".png")
+        path = os.path.join(tempfile.gettempdir(), name + "." + image.file_format)
 
         if isinstance(image, bpy.types.Image):
             if(image.is_dirty):

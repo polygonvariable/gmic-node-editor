@@ -116,15 +116,9 @@ class FDegrade_Fill(GMICBaseNode):
         min=0.0, 
         max=1.0,
     ) # type: ignore
-    index: IntProperty(
-        name="Index",
-        default=0,
-        min=0, 
-        max=100,
-    ) # type: ignore
 
     def create_command(self):
-        return f"fill_color[{self.index}] {self.color[0]*255},{self.color[1]*255},{self.color[2]*255},{self.alpha*255}"
+        return f"fill_color {self.color[0]*255},{self.color[1]*255},{self.color[2]*255},{self.alpha*255}"
 
 
 node_classes = [

@@ -1,5 +1,4 @@
-import os
-import tempfile
+import re
 import random
 
 import bpy
@@ -100,6 +99,15 @@ class IO_AppendIndex(GMICBaseNode):
 
     def finalize_command(self):
         temp_cmd = self.get_input_value("in")
+        
+        string_cmd = re.findall("\\\".*?\\\"", temp_cmd)
+        string_cmd_index = 0
+        string_cmd_map = {}
+
+        for cmd in string_cmd:
+            temp_cmd = temp_cmd.replace(cmd, f"@str{string_cmd_index}")
+            string_cmd_map[string_cmd_index] = cmd
+            string_cmd_index += 1
 
         all_cmd = temp_cmd.split("-")
         if len(all_cmd) < 2:
@@ -112,8 +120,15 @@ class IO_AppendIndex(GMICBaseNode):
 
         last_cmd_new = last_cmd_name + self.create_command() + last_cmd_value
 
-        return temp_cmd.replace(last_cmd, last_cmd_new)
-    
+        temp_cmd = temp_cmd.replace(last_cmd, last_cmd_new)
+
+        string_cmd_index = 0
+        for cmd in string_cmd_map:
+            temp_cmd = temp_cmd.replace(f"@str{string_cmd_index}", string_cmd_map[cmd])
+            string_cmd_index += 1
+
+        return temp_cmd
+
 node_classes = [
     IO_Output,
     IO_Input,

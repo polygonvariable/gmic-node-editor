@@ -13,6 +13,7 @@ from .node import fframe
 from .node import flight
 from .node import fpattern
 from .node import io
+from .node import script
 
 class GMICCategory(NodeCategory):
     @classmethod
@@ -42,6 +43,7 @@ def register():
         GMICCategory("GMIC_NODES_LIGHT", "Light", items=CreateCategoryItems(flight.classes)),
         GMICCategory("GMIC_NODES_PATTERN", "Pattern", items=CreateCategoryItems(fpattern.classes)),
         GMICCategory("GMIC_NODES_IO", "IO", items=CreateCategoryItems(io.classes)),
+        GMICCategory("GMIC_NODES_SCRIPT", "Scripts", items=CreateCategoryItems(script.classes)),
     ]
     register_node_categories("GMIC_NODES", node_categories)
 
