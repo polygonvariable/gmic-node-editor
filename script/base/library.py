@@ -34,7 +34,7 @@ def save_image(image, name):
         if isinstance(image, bpy.types.Image):
             if(image.is_dirty):
                 image.reload()
-                image.file_format = "PNG"
+                # image.file_format = "PNG"
         else:
             print("Output Node: Invalid input image.")
             raise Exception("Invalid input image")
