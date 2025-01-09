@@ -1,11 +1,16 @@
 import re
+import os
 import random
+import subprocess
+import threading
+import tempfile
 
 import bpy
 from bpy.props import ( BoolProperty, FloatProperty, EnumProperty, StringProperty, IntProperty, PointerProperty )
+from bpy import context
 
 from ...base.node import GMICBaseNode
-from ...base.library import save_image, run_gmic
+from ...base.library import save_image, run_gmic, run_gmic_batch
 from ...operator.exec_rungmic import OP_ExecuteRunGMIC
 from ...operator.exec_render import OP_ExecuteRenderLayer
 
@@ -18,6 +23,7 @@ class IO_Output(GMICBaseNode):
 
     name: StringProperty(name="Name", default="Output") # type: ignore
     upscale: BoolProperty(name="Upscale", default=True) # type: ignore
+    separate_thread: BoolProperty(name="Separate Thread", default=False) # type: ignore
 
     def init(self, context):
         self.default_in()
@@ -25,6 +31,7 @@ class IO_Output(GMICBaseNode):
     def draw_buttons(self, context, layout):
         layout.prop(self, "name")
         layout.prop(self, "upscale")
+        layout.prop(self, "separate_thread")
         layout.operator(OP_ExecuteRunGMIC.bl_idname, text="Execute")
 
     def execute(self):
@@ -34,14 +41,62 @@ class IO_Output(GMICBaseNode):
             temp_upscale = self.upscale and "-resize 250%,250%" or ""
             temp_command = self.get_input_value("in") + f" {temp_upscale}"
 
-            if not run_gmic(command=temp_command, name=temp_name):
-                raise Exception("Failed to execute GMIC command")
+            if "NULL_IMAGE" in temp_command:
+                raise Exception("Invalid input image")
 
-            return True
+            if self.separate_thread:
+                thread = threading.Thread(target=run_gmic, args=(temp_command, temp_name))
+                thread.start()
 
-        except:
-            print("Failed to execute Output Node")
-            return False
+            else:
+                if not run_gmic(temp_command, temp_name):
+                    raise Exception("Failed to execute GMIC command")
+
+            return self.separate_thread and "Process started" or "Image processed"
+
+        except Exception as e:
+            return e
+
+class IO_OutputBatch(GMICBaseNode):
+    """Output Batch Node"""
+    
+    bl_idname = "GMIC_IO_OutputBatchNode"
+    bl_label = "Output Batch"
+    bl_icon = "OUTPUT"
+
+    input_path: StringProperty(name="Input", subtype="DIR_PATH") # type: ignore
+    output_path: StringProperty(name="Output", subtype="DIR_PATH") # type: ignore
+    separate_thread: BoolProperty(name="Separate Thread", default=False) # type: ignore
+
+    def init(self, context):
+        self.default_in()
+
+    def draw_buttons(self, context, layout):
+        layout.prop(self, "input_path")
+        layout.prop(self, "output_path")
+        layout.prop(self, "separate_thread")
+        layout.operator(OP_ExecuteRunGMIC.bl_idname, text="Execute")
+
+    def execute(self):
+        try:
+
+            input_dir = self.input_path
+            output_dir = self.output_path
+            chain_command = self.get_input_value("in")
+
+            if self.separate_thread:
+                thread = threading.Thread(target=run_gmic_batch, args=(input_dir, output_dir, chain_command))
+                thread.start()
+
+            else:
+                if not run_gmic_batch(input_dir, output_dir, chain_command):
+                    raise Exception("Failed to execute GMIC commands")
+
+            return self.separate_thread and "Batch process started" or "Batch processed"
+    
+        except Exception as e:
+            print(e)
+            return e
 
 class IO_Input(GMICBaseNode):
     """Input Node"""
@@ -58,7 +113,6 @@ class IO_Input(GMICBaseNode):
 
     def init(self, context):
         self.default_out()
-        name = f"Input_{random.randint(0, 100)}"
 
     def draw_buttons(self, context, layout):
         layout.prop(self, "name")
@@ -69,14 +123,16 @@ class IO_Input(GMICBaseNode):
     def execute(self):
         try:
 
-            path = save_image(image=self.image, name=self.name)
-            gmic_downscale = self.downscale and "-resize 40%,40%" or ""
+            input_path = save_image(image=self.image, name=self.name)
+            if not input_path:
+                raise Exception("Failed to save image")
 
-            return f"{path} {gmic_downscale}"
+            temp_command = self.downscale and "-resize 40%,40%" or ""
+
+            return f"{input_path} {temp_command}"
         
         except:
-            print("Failed to execute Input Node")
-            return None
+            return "NULL_IMAGE"
 
 class IO_AppendIndex(GMICBaseNode):
     """Append Index to previous node"""
@@ -131,6 +187,7 @@ class IO_AppendIndex(GMICBaseNode):
 
 node_classes = [
     IO_Output,
+    IO_OutputBatch,
     IO_Input,
-    IO_AppendIndex
+    IO_AppendIndex,
 ]

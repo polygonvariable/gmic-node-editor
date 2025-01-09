@@ -1,7 +1,9 @@
 # G'MIC Node Editor for Blender 🔆
-A node editor graph for image manipulation using G'MIC directly inside Blender, featuring 100+ of filters.
+A node editor graph for image manipulation using G'MIC directly inside Blender, featuring 100+ of filters along with batch processing.
 
-> ⚠️ NOTE: Only `.png` and `.jpg` file formats are supported and tested, [Failed to execute Output Node](https://github.com/polygonvariable/gmic-node-editor/issues/1)
+> ⚠️ **NOTE:** Only `.png` and `.jpg` file formats are supported and tested, [Failed to execute Output Node](https://github.com/polygonvariable/gmic-node-editor/issues/1)
+
+> ⚠️ **NOTE:** For batch processing, it is recommended to downscale the images by adding a `resize node`.
 
 # Index
 - [How to Use ?](#how-to-use)

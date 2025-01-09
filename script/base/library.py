@@ -29,53 +29,84 @@ def create_enum(items = []):
 def save_image(image, name):
     try:
 
-        path = os.path.join(tempfile.gettempdir(), name + "." + image.file_format)
-
+        image_format = image.file_format
+        image_path = os.path.join(tempfile.gettempdir(), f"{name}.{image_format}")
+        
         if isinstance(image, bpy.types.Image):
             if(image.is_dirty):
                 image.reload()
                 # image.file_format = "PNG"
         else:
-            print("Output Node: Invalid input image.")
+            print("Output Node: Invalid input image")
             raise Exception("Invalid input image")
         
-        print(f"Output Node: Saving image to {path}")
+        print(f"Output Node: Saving image to {image_path}")
 
         if(image.name == "Render Result" or image.name == "Viewer Node"):
-            image.save_render(filepath=path)
+            image.save_render(filepath=image_path)
         else:
-            image.save(filepath=path)
+            image.save(filepath=image_path)
 
-        return path
+        return image_path
     
     except:
         print("Failed to save image")
         return None
 
+def run_gmic_batch(input_dir, output_dir, command):
+    try:
+
+        #
+        gmic_path = get_preference_path()
+
+        #
+        for filename in os.listdir(input_dir):
+            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
+
+                #
+                input_path = os.path.join(input_dir, filename)
+                output_path = os.path.join(output_dir, filename)
+
+                #
+                gmic_command = f"{gmic_path} {input_path} {command} -o {output_path}"
+
+                #
+                subprocess.run(gmic_command, shell=True, check=True)
+    
+        return True
+
+    except:
+        print("Failed to execute GMIC command")
+        return False
+
 
 def run_gmic(command, name):
     try:
 
+        #
         output_path = os.path.join(tempfile.gettempdir(), name + ".png")
 
+        #
         gmic_path = get_preference_path()
-
         gmic_command = f"{gmic_path} {command} -o {output_path}"
 
+        #
         print(f"GMIC command: {gmic_command}")
-
         subprocess.run(gmic_command, shell=True, check=True)
 
+        #
         if os.path.exists(output_path):
-                
             image = bpy.data.images.get(name)
+
             if image:
                 image.reload()
+
             else:
                 image = bpy.data.images.load(output_path, check_existing=True)
                 image.name = name
 
             print(f"Output image loaded: {image.name}")
+
         else:
             raise Exception("Failed to load output image")
 
